@@ -63,7 +63,7 @@ env:
   HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
   TRIGGERING_EVENT: ${{ github.event.workflow_run.event }}
   CARGO_TERM_COLOR: always
-  REGISTRY_ACR: ${{ secrets.ACR_REGISTRY }}
+  REGISTRY_ACR: crpi-hzehwxn7bt1lszkb.cn-hangzhou.personal.cr.aliyuncs.com/3thinkthendoit/rustfs
   DOCKER_PLATFORMS: linux/amd64
 
 jobs:
@@ -307,10 +307,9 @@ jobs:
           persist-credentials: false
 
       - name: Login to Alibaba Cloud ACR
-        if: env.REGISTRY_ACR != ''
         uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9 # v3
         with:
-          registry: ${{ secrets.ACR_REGISTRY }}
+          registry: crpi-hzehwxn7bt1lszkb.cn-hangzhou.personal.cr.aliyuncs.com
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
@@ -450,10 +449,9 @@ jobs:
             suffix: "-glibc"
     steps:
       - name: Login to Alibaba Cloud ACR
-        if: env.REGISTRY_ACR != ''
         uses: docker/login-action@c94ce9fb468520275223c153574b00df6fe4bcc9
         with:
-          registry: ${{ secrets.ACR_REGISTRY }}
+          registry: crpi-hzehwxn7bt1lszkb.cn-hangzhou.personal.cr.aliyuncs.com
           username: ${{ secrets.ACR_USERNAME }}
           password: ${{ secrets.ACR_PASSWORD }}
 
